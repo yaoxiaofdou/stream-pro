@@ -1,0 +1,129 @@
+<ion-header class="musicDH">
+
+  <ion-navbar color="transparent" text-center>
+
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="musicDC">
+  <!-- mp3 mv -->
+  <!-- <div class="musicDC__Type">
+    <a *ngFor="let mode of music.nodeList"
+        (click)="changeMusicMode(mode.mode)"
+        [ngClass]="{'a--active': music.mode == mode.mode}">
+      {{ mode.name }}
+    </a>
+  </div> -->
+  <!-- 专辑 *ngIf="music.mode == 1" -->
+  <div>
+    <div class="musicDC--mask" [ngStyle]="{ 'background-image' : music.bg ,
+                                            'background-position' : 'center center',
+                                            'background-size' : 'cover',
+                                            'filter' : 'blur(40px)' }"></div>
+    <div class="musicDC__content">
+      <!--
+        专辑图片区域
+      -->
+      <div class="musicDC__c__imgpanel">
+        <!-- 旋转图片 -->
+        <div class="musicDC__c__imgpanel">
+          <img *ngIf="music.img" src="{{ music.img }}" alt="music.name">
+        </div>
+        <div class="musicDC__c__imgTitle">
+          <h2>{{ music.name || '' }}</h2>
+          <p>{{ music.sing || '' }}</p>
+        </div>
+      </div>
+      <!--
+        歌词
+      -->
+      <div class="musicDC__c__lyricPanel">
+        <div class="musicDC__c__lyric" id="lyricPanel">
+          <p *ngFor="let item of music.lyric"
+              [ngClass]="{'lyric--active': item.isActive}">
+              {{ item.lyric }}
+          </p>
+        </div>
+      </div>
+      <!-- <input type="file" name="getAudio" id="audioFileInput" /> -->
+      <!-- <h3>{{ music.url }}</h3> -->
+      <audio src="{{ music.url }}" autoplay id="ytAudio"></audio>
+      
+    </div>
+  </div>
+  <!-- MV -->
+  <!-- <div *ngIf="music.mode == 2"> -->
+    <!-- <cc-video [src]="music.mvUrl"></cc-video> -->
+    <!-- <video controls="" autoplay="" name="media"><source src="http://v4.music.126.net/20171203023215/f976b567239ddc7e95371c6417515e22/web/cloudmusic/MTI5MDc0OTc=/ddc8635987fdcd132d3f154faa7163d0/8bba012be70462a3befee44a81f9790d.mp4" type="video/mp4"></video>
+  </div> -->
+
+</ion-content>
+
+<ion-footer>
+  <!--
+    时间进度条
+  -->
+  <div class="music__progressBar">
+    <div class="music__progressBar__bg">
+      <span class="music__progressBar__move" [ngStyle]="{'width' : progressBar.width }">
+        <span *ngIf="progressBar.date">{{ progressBar.date || '00:00' }}</span>
+      </span>
+      <span *ngIf="progressBar.sumDate" class="move_SumTime"> {{ progressBar.sumDate || '00:00'}}</span>
+    </div>
+  </div>
+
+  <!--
+    控制开关，后退一首，播放暂停，前进一首 等等  7 52 21  7
+  -->
+  <div class="music__ctrl">
+    <div class="music__ctrlBtn"></div><!-- 前一首
+ --><div class="music__ctrlBtn" (click)="getParentMusic()">
+      <ion-icon name="rewind"></ion-icon>
+    </div><!--
+ --><div class="music__ctrlBtn">
+      <div class="music__ctrlBtn__Play" (click)="musicPlay()">
+        <ion-icon name="play" *ngIf="!music.play" style="position:relative;left:;"></ion-icon>
+        <ion-icon name="pause" *ngIf="music.play"></ion-icon>
+      </div>
+    </div><!-- 下一首
+ --><div class="music__ctrlBtn" (click)="getNextMusic()">
+      <ion-icon name="fastforward"></ion-icon>
+    </div><!--
+ --><div class="music__ctrlBtn btn__gd" (click)="progressBar.showList = false;">
+      <ion-icon name="menu"></ion-icon>
+    </div>
+  </div>
+
+  <!-- 歌曲列表 -->
+  <div class="musicList" 
+      (click)="musicListClose($event)"
+      [ngClass]="{'musicList--show': !progressBar.showList}">
+    <div class="musicList__head">
+      {{ music.musicIndex || 0 }}/{{ music.searchList.length || 0 }}
+    </div>
+    <ion-list class="musicList__cont">
+      <!-- 选中状态 [ngClass]="{'musicList__item--play':music.isPlay}" -->
+      <ion-item *ngFor="let music of music.searchList;let musicIndex = index;" 
+                class="musicList__item"
+                (click)="changeThisMusic($event,music)">
+        <!-- 当前播放的歌曲显示头像，非当前显示序号 -->
+        <ion-avatar item-left class="musicList__itemIndex">
+          {{ musicIndex + 1 }}
+        </ion-avatar>
+        <ion-avatar item-left class="musicList__itemFace">
+          <img [src]="music['al']['picUrl']">
+        </ion-avatar>
+        <h2> {{ music['name'] }} </h2>
+        <p> {{ music['ar'][0]['name'] }} </p>
+        <ion-avatar item-right class="musicList__playIcon" *ngIf="music.isPlay">
+          <ion-icon name="musical-notes"></ion-icon>
+        </ion-avatar>
+      </ion-item>
+    </ion-list>
+    <div class="musicList__close" (click)="musicListClose($event)">
+      关闭
+    </div>
+  </div>
+
+</ion-footer>

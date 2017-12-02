@@ -1,0 +1,39 @@
+page-home {
+    .homeHeader{
+        .homeHeader__navbar{
+            background-color:$app_color_c;
+            color:$app_color_a;
+        }
+    }
+    .homeContent{
+        .homeClass{
+            .homeClass__col{
+                text-align: center;
+                .homeClass__col__class{
+                    display: inline-block;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    width: 4rem;
+                    height: 4rem;
+                    font-size: 2rem;
+                    text-align: center;
+                    line-height: 4rem;
+                    color: whitesmoke;
+                    box-shadow: 0.1rem 0.1rem 0.5rem #484848;
+                    i{
+                        font-size: 2.6rem;
+                        color: #6f6f6f;
+                    }
+                    .homeClass__col__cls__Add{
+                        line-height:4rem;
+                        font-size:3rem;
+                    }
+                }
+                p{
+                    color:$size_color;
+                    margin-top: 0.3rem;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,48 @@
+page-music-search {
+    $searchBg: #48465d;
+
+    .msearchH{
+        background-color: transparent;
+        .toolbar-background{
+            border:none;
+        }
+        .msearchH__stroge{
+            background-color: transparent;
+            color: #999;
+            padding: 0 1rem;
+            h3{
+                padding: 0.5rem 0;
+                margin: 0;
+                font-size: 1.4rem;
+                span{
+                    float:right;
+                }
+            }
+        }
+    }
+    .msearchC{
+        background-color: $searchBg;
+
+        .msearchC__stroge__list{
+            .msearchC__stroge__item{
+                background: transparent;
+                color: #fff;
+                border-bottom: 1px solid #eee;
+                font-size: 1.4rem;
+                min-height: auto;
+                .item-inner{
+                    border:none;
+                }
+            }
+        }
+
+        .msearchC__list{
+            .msearchC__item{
+                background-color: transparent;
+                h2{
+                    color: #fff;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+page-icon-list {
+    .iconlist{
+        .iconlist__col{
+            .iconlist__item{
+                display: flex;
+                width: 6rem;
+                height: 6rem;
+                background: #f7f7f7;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto;
+                i{
+                    color: #989292;
+                    font-size: 3rem;
+                }
+            }
+        }
+    }
+}

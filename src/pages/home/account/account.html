@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar color="colora">
+    <ion-title>
+       {{ character.item.name }}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+          <span ion-text color="colore" showWhen="ios">取消</span>
+          <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="homeClass__putContent">
+  <ion-list class="homeClass__putContent__list">
+    <ion-item class="homeClass__putContent__list__item">
+      <ion-avatar item-start>
+        <div class="homeClass__putContent__list__item__face" 
+             [ngStyle]="{ 'background-color' : character.item.color }">
+          <i class="{{ 'iconfont ' + character.item.icon }}"></i>
+        </div>
+      </ion-avatar>
+      <h2>{{ character.item.name }}</h2>
+      <p>{{ character.item.title }}</p>
+    </ion-item>
+
+    <ion-item class="homeClass__putContent__list__item__content">
+      <ion-note item-start>
+        Date:
+      </ion-note>
+      <ion-note item-end>
+        <ion-datetime 
+                placeholder="how date?"
+                [ngStyle]="{'text-align':'left'}"
+                displayFormat="YYYY-MM-DD" 
+                [(ngModel)]="character.date"></ion-datetime>
+      </ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-note item-start>
+        Why:
+      </ion-note>
+      <ion-note item-end>
+        <ion-input type="text"
+                  placeholder="so?"
+                  [(ngModel)]="character.why"></ion-input>
+      </ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-note item-start>
+        Money:
+      </ion-note>
+      <ion-note item-end>
+        <ion-input type="number"
+                  placeholder="how much?"
+                  [(ngModel)]="character.price"></ion-input>
+      </ion-note>
+    </ion-item>
+  </ion-list>
+
+  <ion-grid class="homeClass__putContent__submit">
+    <ion-row>
+      <ion-col col-12>
+        <button class="homeClass__putContent__submitBtn" ion-button large >Submit</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+
+</ion-content>

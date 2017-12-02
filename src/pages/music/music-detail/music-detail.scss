@@ -1,0 +1,254 @@
+page-music-detail {
+    $searchDBg: #48465d;
+
+    .musicDH{
+        background-color: transparent;
+        .toolbar-background{
+            border:none;
+        }
+    }
+    .musicDC{
+        background-color: $searchDBg;
+        position: relative;
+        .musicDC__Type{
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            z-index: 3;
+            a{
+                display: inline-block;
+                padding: 0.2rem 0.6rem;
+                font-size: 1.4rem;
+                background-color: transparent;
+                color: #fff;
+                border: 1px solid #fff;
+                margin: 0 0.5rem;
+                border-radius: 0.5rem;
+            }
+            .a--active{
+                background-color: $searchDBg;
+            }
+        }
+        .musicDC--mask{
+            width:100%;
+            height:100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+        .musicDC__content{
+            width:100%;
+            height:100%;
+            color:#fff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 3;
+            background-color: transparent;
+
+            .musicDC__c__imgpanel{
+                text-align: center;
+                padding: 0.5vh 0;
+                .musicDC__c__imgpanel{
+                    width: 40vh;
+                    height: 40vh;
+                    display: inline-block;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .musicDC__c__imgTitle{
+                    padding: 1vh 0;
+                    h2{
+                        margin: 0;
+                        font-size: 2rem;
+                        padding: 0.2rem;
+                        color:#fff;
+                    }
+                    p{
+                        font-size: 1.6rem;
+                        margin: 0.4rem 0 0;
+                        padding: 0 0.4rem;
+                        color: #fff;
+                        display: inline-block;
+                        position: relative;
+                        &:before{
+                            content: '';
+                            position: absolute;
+                            width: 3rem;
+                            top: 0;
+                            bottom: 0;
+                            left: -4rem;
+                            margin: auto;
+                            background-color: #fff;
+                            height: 0.1rem;
+                        }
+                        &:after{
+                            content: '';
+                            position: absolute;
+                            width: 3rem;
+                            top: 0;
+                            bottom: 0;
+                            right: -4rem;
+                            margin: auto;
+                            background-color: #fff;
+                            height: 0.1rem;
+                        }
+                    }
+                }
+            }
+
+            .musicDC__c__lyricPanel{
+                height: 24vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding-top: 2vh;
+                .musicDC__c__lyric{
+                    width: 100%;
+                    text-align: center;
+                    height: 20vh;
+                    overflow-y: scroll;
+                    font-size: 1.4rem;
+                    p{
+                        transition: 0.3s;
+                    }
+                    .lyric--active{
+                        color:yellow;
+                        font-size: 1.6rem;
+                    }
+                }
+            }
+        }
+    }
+    .music__progressBar{
+        width:100%;
+        padding: 0 1rem;
+        .music__progressBar__bg{
+            position: relative;
+            width:100%;
+            height:2px;
+            background-color: rgba(255,255,255,0.8);
+            .music__progressBar__move{
+                display: inline-block;
+                height:100%;
+                transition: 1s;
+                background-color: #2ec95c;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 40%;
+                span{
+                    display: inline-block;
+                    position: absolute;
+                    right: -0.5rem;
+                    top: 0.4rem;
+                    font-size: 1.2rem;
+                    color: #fff;
+                }
+            }
+            .move_SumTime{
+                display: inline-block;
+                color: #fff;
+                position: absolute;
+                top: -1.4rem;
+                right: -0.5rem;
+                font-size: 1.2rem;
+            }
+        }
+    }
+    .musicList{
+        width: 100%;
+        height: 100%;
+        padding-top: 50vh;
+        position: fixed;
+        bottom: -100vh;
+        overflow: hidden;
+        transition: 0.4s;
+        .musicList__head{
+            color: #737070;
+            text-align: right;
+            padding-right:1rem;
+            font-size: 1.8rem;
+            font-weight: 300;
+            padding: 0.9rem;
+            background-color: #fff;
+            border-bottom:0.55px solid #eee;
+        }
+        .musicList__cont{
+            height: 38vh;
+            overflow-y: scroll;
+            margin:0;
+            background-color: #fff;
+            .musicList__item{
+                margin: 0 0 0.2rem;
+                padding: 0.4rem 0;
+                border-bottom: 1px solid #c7c7c7;
+                background-color: transparent;
+                &:first-child(){
+                    border-top:none;
+                }
+                &:last-child(){
+                    border-bottom:none;
+                }
+                .musicList__itemIndex{
+                    font-size: 2rem;
+                    text-align: center;
+                    line-height: 3rem;
+                    color: #525050;
+                }
+                .item-inner{
+                    border:none;
+                }
+                .musicList__itemFace{
+                    margin: 0 1rem 0 0;
+                }
+                .label{
+                    margin: 0;
+                    h2{
+                        font-weight: 300;
+                    }
+                    p{
+                        font-weight: 300;
+                    }
+                }
+                .musicList__playIcon{
+                    .icon{
+                        font-size: 3rem;
+                        color: #a7e4a7;
+                    }
+                }
+            }
+            .musicList__item--play{
+                background: #f1f1f1;
+            }
+        }
+        .musicList__close{
+            height: 6vh;
+            font-size: 1.6rem;
+            font-weight: 300;
+            background-color: #fff;
+            text-align: center;
+            line-height: 6vh;
+            border-top:0.55px solid #eee;
+        }
+    }
+    .musicList--show{
+        bottom: 7vh !important;
+    }
+    .music__ctrl{
+        padding: 2vh 0;
+        .music__ctrlBtn{
+            display: flex;
+            align-items: center;
+            width: 20%;
+            justify-content: center;
+            font-size: 3rem;
+            color: #fff;
+            text-align: center;
+            display: inline-block;
+        }
+    }
+}

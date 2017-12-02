@@ -1,0 +1,30 @@
+page-add-class {
+  .homeClass__add {
+    .homeClass__add__list {
+      .homeClass__add__list__item {
+        .homeClass__add__list__item__face {
+            display: inline-block;
+            border-radius: 50%;
+            overflow: hidden;
+            width: 5rem;
+            height: 5rem;
+            font-size: 2rem;
+            text-align: center;
+            line-height: 5rem;
+            color: whitesmoke;
+            box-shadow: 0.1rem 0.1rem 0.5rem #484848;
+            i{
+                font-size: 2.6rem;
+                color: #6f6f6f;
+            }
+        }
+      }
+    }
+    .text-input {
+      text-align: right;
+    }
+    .homeClass__add__submit {
+      text-align: center;
+    }
+  }
+}

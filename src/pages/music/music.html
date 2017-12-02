@@ -1,0 +1,59 @@
+<ion-header class="musicH">
+
+  <ion-navbar color="transparent" text-center>
+    <ion-title>一听了之</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="goSearch()">
+        <span ion-text>搜索</span>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="musicC">
+  
+  <ion-grid>
+    <h2>
+      <ion-icon name="musical-note"></ion-icon>
+      云音乐特色榜
+    </h2>
+    <ion-row>
+
+      <ion-col col-6 *ngFor="let ranking of music.CloudFeatureRankingArray"
+              (click)="hrefRankingDetail(ranking)">
+        <ion-card class="musicC__Rcard">
+          <img [src]="ranking.coverImgUrl"/>
+          <ion-card-content class="musicC__Rcard__C">
+            <ion-card-title class="musicC__Rcard__title">
+              {{ ranking.name }}
+            </ion-card-title>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+
+    <h2>
+      <ion-icon name="musical-note"></ion-icon>
+      全球媒体榜
+    </h2>
+    <ion-row>
+
+      <ion-col col-6 *ngFor="let ranking of music.GlobalMediaRankingArray"
+               (click)="hrefRankingDetail(ranking)">
+        <ion-card class="musicC__Rcard">
+          <img [src]="ranking.coverImgUrl"/>
+          <ion-card-content class="musicC__Rcard__C">
+            <ion-card-title class="musicC__Rcard__title">
+              {{ ranking.name }}
+            </ion-card-title>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

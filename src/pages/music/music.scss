@@ -1,0 +1,32 @@
+page-music {
+    $musicBg: #48465d;
+    .musicH{
+        background-color: transparent;
+        .toolbar-background{
+            border:none;
+        }
+    }
+    .musicC{
+        background-color: $musicBg;
+        h2{
+            color:#fff;
+            padding-left:16px;
+            margin: 0;
+            font-size: 2rem;
+        }
+        .row{
+            .col{
+                .musicC__Rcard{
+                    text-align: center;
+                    .musicC__Rcard__C{
+                        padding: 0.2rem;
+                        .musicC__Rcard__title{
+                            font-size: 1.6rem;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

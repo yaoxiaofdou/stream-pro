@@ -1,0 +1,26 @@
+page-ranking-detail {
+    $musicBg: #48465d;
+
+    .rankingDetailH{
+        background-color: transparent;
+        .toolbar-background{
+            border:none;
+        }
+        .rankingDetailH__header{
+            width: 100%;
+            height: 30vh;
+        }
+        .rankingDetailH__marquee{
+            font-size: 2rem;
+            background-color: #fff;
+            color:#48465d;
+        }
+    }
+    .rankingDetailC{
+        background-color: $musicBg;
+        .rankingDetailC__list{
+            margin: 0;
+        }
+    }
+    
+}

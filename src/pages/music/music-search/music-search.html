@@ -1,0 +1,62 @@
+<ion-header class="msearchH">
+
+  <ion-navbar color="transparent" text-center>
+    <ion-searchbar [(ngModel)]="param.text" 
+                   placeholder="搜索音乐"
+                   (keypress)="searchID($event)"></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button type="search" (click)="searchID()">
+        <span ion-text>搜索</span>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <!-- 本地存储的搜索 -->
+  <div class="msearchH__stroge" (click)="search.stroge = true;">
+    <h3> {{ search.stroge ? '最近搜索记录' : '查看历史搜索' }} <span (click)="clearStrogeData($event)">clear</span></h3>
+  </div>
+
+</ion-header>
+
+<ion-content class="msearchC">
+
+  <!-- 本地存储列表 -->
+  <div *ngIf="search.stroge">
+    <ion-list class="msearchC__stroge__list">
+      <ion-item class="msearchC__stroge__item" 
+                *ngFor="let stext of search.strogeList"
+                (click)="strogeSearch(stext)">
+        {{ stext }}
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <!-- 歌曲搜索列表 -->
+  <div *ngIf="!search.stroge">
+      <ion-list class="msearchC__list">
+          
+        <ion-item class="msearchC__item" *ngFor="let sitem of search.searchlist"
+            (click)="getMusic(sitem)">
+          <ion-avatar item-left>
+            <img src="{{ sitem['al']['picUrl'] }}" alt="{{ sitem['al']['name'] }}" />
+          </ion-avatar>
+          <h2>{{ sitem['name'] }}</h2>
+          <p>{{ sitem['ar'][0]['name'] }}</p>
+        </ion-item>
+    
+      </ion-list>
+    
+      <ion-infinite-scroll (ionInfinite)="ionInfiniteGetData($event)" *ngIf="param.offset !== param.songCount">  
+        <ion-infinite-scroll-content  
+          loadingSpinner="bubbles"
+          loadingText="Loading more data...">
+        </ion-infinite-scroll-content>  
+      </ion-infinite-scroll>
+    
+      <div text-center color="colorb" *ngIf="search.listend">
+        没有数据啦亲～～
+      </div>
+  </div>
+
+
+</ion-content>

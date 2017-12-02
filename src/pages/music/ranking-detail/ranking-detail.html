@@ -1,0 +1,33 @@
+<ion-header class="rankingDetailH">
+
+  <ion-navbar color="transparent" text-center>
+    <ion-title>{{ rankingDetail.name }}</ion-title>
+  </ion-navbar>
+
+  <!-- 排行榜标题图片 -->
+  <div class="rankingDetailH__header" 
+       [ngStyle]="{'background-image': 'url('+rankingDetail.background +')','background-size' : 'cover'}"
+       style="background-size:cover;background-position:center center;">
+  </div>
+  <!-- 滚动信息 -->
+  <marquee class="rankingDetailH__marquee">
+    {{ rankingDetail.description }}
+  </marquee>
+
+</ion-header>
+
+<ion-content class="rankingDetailC">
+
+  <ion-list class="rankingDetailC__list">
+
+    <ion-item *ngFor="let music of rankingDetail.list" (click)="hrefMusicDetial(music)">
+      <ion-avatar item-left>
+        <img [src]="music['al']['picUrl']">
+      </ion-avatar>
+      <h2>{{ music.name }}</h2>
+      <p>{{ formartAuther(music['ar']) }}</p>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

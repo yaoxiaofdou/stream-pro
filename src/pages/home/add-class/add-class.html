@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar color="colora">
+    <ion-title>
+       {{ addclass.name }}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+          <span ion-text color="primary" showWhen="ios">Cancel</span>
+          <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="homeClass__add">
+  <ion-list class="homeClass__add__list">
+    <ion-item class="homeClass__add__list__item">
+      <ion-avatar item-start>
+        <div class="homeClass__add__list__item__face" 
+          [ngStyle]="{ 'background-color' : addclass.color }">
+          <i class="{{ 'iconfont ' + addclass.icon.icon }}"></i>
+        </div>
+      </ion-avatar>
+      <ion-label>{{ addclass.color }}</ion-label>
+
+      <!-- color -->
+      <ion-select placeholder="color" [(ngModel)]="addclass.color">
+        <ion-option value="{{ cls.color }}" *ngFor="let cls of addclass.colorlist">
+          {{ cls.label }}
+          <ion-note item-end>
+            {{ cls.color }}
+          </ion-note>
+        </ion-option>
+      </ion-select>
+
+    </ion-item>
+    <!--
+      图标选择
+    -->
+    <ion-item (click)="showIconModal()">
+      <ion-note item-start>
+        Icon
+      </ion-note>
+      <ion-note item-end>
+        {{ addclass.icon ? addclass.icon.label : 'Select' }}
+      </ion-note>
+    </ion-item>
+
+    <!--
+      分类名称
+    -->
+    <ion-item>
+      <ion-note item-start>
+        Name:
+      </ion-note>
+      <ion-note item-end>
+        <ion-input type="text"
+                  placeholder="Class Name"
+                  [(ngModel)]="addclass.classname"></ion-input>
+      </ion-note>
+    </ion-item>
+  </ion-list>
+
+  <ion-grid class="homeClass__add__submit">
+    <ion-row>
+      <ion-col col-12>
+        <button class="homeClass__add__submitBtn" ion-button large 
+                (click)="createClass()">
+          Save
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+
+</ion-content>

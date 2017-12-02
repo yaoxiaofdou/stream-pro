@@ -1,0 +1,40 @@
+<ion-header class="homeHeader">
+  <ion-navbar class="homeHeader__navbar" color="colora">
+    <ion-title>聪记</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="homeContent">
+
+  <!--
+    顶部 记账 or 支出 or 收入
+  -->
+
+  <!--
+    分类
+  -->
+
+  <ion-grid class="homeClass">
+    <ion-row>
+
+      <ion-col col-3 class="homeClass__col" *ngFor="let cls of kaClass">
+        <div class="homeClass__col__class" (click)="openModal(cls)" [ngStyle]="{'background-color': cls.color }">
+            <i class="{{ 'iconfont ' + cls.icon }}" ></i>
+        </div>
+        <p>{{ cls.name }}</p>
+      </ion-col>
+      <!--
+        new cls
+      -->
+      <ion-col col-3 class="homeClass__col">
+        <div class="homeClass__col__class" 
+            (click)="addClass()"
+             [ngStyle]="{'background-color':'#999'}">
+          <ion-icon name="add" class="homeClass__col__cls__Add"></ion-icon>
+        </div>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
